@@ -1,0 +1,14 @@
+extend layout
+
+block settings
+  header
+    h1 Round 1
+  ul
+    li Brett
+    li Kristin
+
+block cards
+  header
+    button(type='button', ng-click='right = !right') slide
+  .cards
+    .card(ng-repeat='card in cards') {{card.text}}

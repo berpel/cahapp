@@ -1,0 +1,57 @@
+/*
+ * Import nib
+ */
+@import 'nib'
+
+
+/*
+ * Grab a custom font from Google
+ */
+//@import url('http://fonts.googleapis.com/css?family=Quicksand')
+
+/*
+ * Nib provides a CSS reset
+ */
+global-reset()
+
+html, body
+  height 100%
+  width 100%
+
+body
+  background #f4f4f4
+  font Arial, Helvetica, sans-serif
+
+article
+  height 100%
+  position relative
+  width 100%
+  section
+    absolute top left
+    height 100%
+    transition .3s linear
+    width 100%
+
+    header
+      background #333
+      padding 10px
+
+    &.settings
+      background #444
+      color #fff
+      width: 90%
+      header
+        text-align center
+
+    &.cards
+      background #fff
+      &.right
+        transform translate(90%, 0)
+      header
+        button
+          border 1px solid #000
+
+      .card
+        border 1px solid #f4f4f4
+        font-size 36pt
+        padding 20px

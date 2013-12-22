@@ -1,0 +1,17 @@
+!!!5
+html(ng-app)
+  head
+    title #{title}
+    script(src='/scripts/data.js')
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+    script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js')
+    script(src='/scripts/app.js')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+
+    article
+        section.settings(ng-controller='SettingsCtrl')
+            block settings
+        
+        section.cards(ng-controller='CardsCtrl', ng-class='{"right":right}')
+            block cards

@@ -1,0 +1,38 @@
+var cardsWhite = [
+  {text: 'The female orgasm.'},
+  {text: 'The homosexual lifestyle.'},
+  {text: 'The force.'},
+  {text: 'Being a dinosaur.'},
+  {text: 'A boo-boo.'},
+  {text: 'Eating the last known bison.'},
+  // start
+  {text: 'Being on fire.'},
+  {text: 'Racism.'},
+  {text: 'Old-people smell.'},
+  {text: 'A micropenis.'},
+  {text: 'Women in yogurt commercials.'},
+  {text: 'Classist undertones.'},
+  {text: 'Not giving a shit about the Third World.'},
+  {text: 'Roofies.'},
+  {text: 'A windmill full of corpses.'},
+  {text: 'The gays.'},
+  {text: 'An oversized lollipop.'},
+  {text: 'African children.'},
+  {text: 'An asymmetric boob job.'},
+  {text: 'Bingeing and purging.'},
+  {text: 'The hardworking Mexican.'},
+  {text: 'An Oedipus complex.'},
+  {text: 'A tiny horse.'},
+  {text: 'Boogers.'},
+  {text: 'Penis Envy.'},
+];
+
+var cardsBlack = [
+  {text: 'How did I lose my virginity?'},
+  {text: 'Why can\'t I sleep at night?'},
+  {text: 'What\'s that smell?'},
+  {text: 'I got 99 problems but $1 ain\'t one.'},
+  {text: 'Maybe she\'s born with it. Maybe it\'s $1'},
+  {text: 'What\'s the next Happy Meal® toy?'},
+  {text: 'Here is the church\nHere is the steeple\nOpen the doors\nAnd there is $1'},
+];
