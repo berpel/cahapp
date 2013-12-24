@@ -2,13 +2,14 @@ extend layout
 
 block settings
   header
-    h1 Round 1
+    h1 Round {{round}}
   ul
-    li Brett
-    li Kristin
+    li(ng-repeat='player in players') {{name}}
 
 block cards
   header
     button(type='button', ng-click='right = !right') slide
-  .cards
-    .card(ng-repeat='card in cards') {{card.text}}
+  ul.frames(rn-carousel)
+    li.frame(ng-repeat='card in cardsWhite')
+      .card
+        p {{card.text}}

@@ -1,13 +1,20 @@
-function SettingsCtrl($scope) {
-  $scope.right = false;
+angular.module('cah', ['angular-carousel']);
+
+function GameCtrl($scope) {
+  $scope.round = 1;
+  $scope.players = [
+    {name: 'Breet', wins: 3},
+    {name: 'Mattkins', wins: 1},
+    {name: 'Kristin', wins: 0}
+  ];
 }
 
-function CardsCtrl($scope) {
+function PlayerCtrl($scope) {
   $scope.cardsWhite = getWhiteCards(10);
 
-  $scope.cardsBlack = [
-    {text: 'What did the US airdrop to the children of Afghanistan?'}
-  ]
+  $scope.submit = function() {
+
+  }
 }
 
 getWhiteCards = function(quantity) {
