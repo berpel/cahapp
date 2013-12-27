@@ -1,15 +1,30 @@
 extend layout
 
-block settings
-  header
-    h1 Round {{round}}
-  ul
-    li(ng-repeat='player in players') {{name}}
+block content
+  article
+    section.game(ng-controller='GameCtrl')
+      header
+        h1 Round {{round}}
+      .labels
+        label.status: i.fa.fa-check
+        label.player Player
+        label.score Score
+      ul
+        li(ng-repeat='player in players', ng-click='select(player)')
+          .card.icon(ng-class='{"black czar":player.status=="czar",white:player.status > 0,"x{{player.status}}":player.status > 0}')
+          span.name {{player.name}}
+          span.score {{player.score}}
 
-block cards
-  header
-    button(type='button', ng-click='right = !right') slide
-  ul.frames(rn-carousel)
-    li.frame(ng-repeat='card in cardsWhite')
-      .card
-        p {{card.text}}
+    
+    section.cards(ng-controller='PlayerCtrl', ng-class='{"right":right}')
+      header
+        i.fa.fa-bars(ng-click='right = !right')
+      ul.frames(rn-carousel, rn-carousel-watch)
+        li.frame(ng-repeat='card in cardsWhite')
+          .card.white.full(ng-click='select($index)', ng-class='card.effect')
+            p {{card.text}}
+      .card.black.preview(ng-class='cardBlack.effect')
+        p {{cardBlack.text}}
+
+    //-.dialog
+      .wrap

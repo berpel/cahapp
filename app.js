@@ -4,8 +4,7 @@
  */
 var express = require('express')
   , stylus = require('stylus')
-  , nib = require('nib')
-  , webRTC = require('webrtc.io').listen(8001);
+  , nib = require('nib');
 
 var app = express();
 

@@ -108,6 +108,75 @@ body {
   font: Arial, Helvetica, sans-serif;
   overflow: hidden;
 }
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 9999;
+}
+.dialog {
+  background: rgba(0,0,0,0.8);
+  bottom: 0;
+  position: absolute;
+  -webkit-transform: translate(0, 100%);
+  -moz-transform: translate(0, 100%);
+  -o-transform: translate(0, 100%);
+  -ms-transform: translate(0, 100%);
+  transform: translate(0, 100%);
+  width: 100%;
+  z-index: 10000;
+}
+.dialog.animate {
+  -webkit-transition: -webkit-transform 0.1s linear;
+  -moz-transition: -moz-transform 0.1s linear;
+  -o-transition: -o-transform 0.1s linear;
+  -ms-transition: -ms-transform 0.1s linear;
+  transition: transform 0.1s linear;
+}
+.dialog.show {
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.dialog .wrap {
+  padding: 20px;
+}
+.dialog .wrap p {
+  color: #fff;
+  font-family: "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.dialog .wrap button {
+  border: none;
+  border-bottom: 2px solid transparent;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  color: #fff;
+  display: block;
+  font-family: "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  outline: none;
+  padding: 10px;
+  text-transform: uppercase;
+  width: 100%;
+}
+.dialog .wrap button.green {
+  background: #1ad15b;
+  border-color: #15a749;
+  text-shadow: 1px 1px 0 #15a749;
+}
+.dialog .wrap button.red {
+  background: #dd435d;
+  border-color: #c3233e;
+  text-shadow: 1px 1px 0 #c3233e;
+}
+.dialog .wrap button + button {
+  margin-top: 20px;
+}
 article {
   height: 100%;
   position: relative;
@@ -118,42 +187,276 @@ article section {
   top: 0;
   left: 0;
   height: 100%;
-  -webkit-transition: 0.3s linear;
-  -moz-transition: 0.3s linear;
-  -o-transition: 0.3s linear;
-  -ms-transition: 0.3s linear;
-  transition: 0.3s linear;
+  -webkit-transition: -webkit-transform 0.1s linear;
+  -moz-transition: -moz-transform 0.1s linear;
+  -o-transition: -o-transform 0.1s linear;
+  -ms-transition: -ms-transform 0.1s linear;
+  transition: transform 0.1s linear;
   overflow: hidden;
   width: 100%;
 }
 article section header {
   background: #333;
+  color: #fff;
+  font-family: "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   padding: 10px;
 }
-article section.settings {
+article section.game {
   background: #444;
   color: #fff;
+  font-family: "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   width: 90%;
 }
-article section.settings header {
+article section.game header {
+  background: #444;
   text-align: center;
+}
+article section.game .labels {
+  background: #3b3b3b;
+  color: #aaa;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 12px;
+  padding: 6px 0;
+  text-transform: uppercase;
+}
+article section.game .labels label.status {
+  margin-left: 15px;
+}
+article section.game .labels label.player {
+  margin-left: 15px;
+}
+article section.game .labels label.score {
+  float: right;
+  margin-right: 15px;
+}
+article section.game ul li {
+  zoom: 1;
+  border-bottom: 1px solid #3b3b3b;
+  text-shadow: 1px 1px 1px rbga(0, 0, 0, 1);
+  padding: 15px;
+}
+article section.game ul li:before,
+article section.game ul li:after {
+  content: "";
+  display: table;
+}
+article section.game ul li:after {
+  clear: both;
+}
+article section.game ul li span.name {
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+article section.game ul li span.score {
+  float: right;
+  text-align: center;
+  width: 41px;
+}
+article section .card {
+  font-family: "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  overflow: hidden;
+  position: relative;
+}
+article section .card.white {
+  background-color: #fff;
+  background-image: -webkit-linear-gradient(#fff 0%, #f7f7f7 100%);
+  background-image: -moz-linear-gradient(#fff 0%, #f7f7f7 100%);
+  background-image: -o-linear-gradient(#fff 0%, #f7f7f7 100%);
+  background-image: -ms-linear-gradient(#fff 0%, #f7f7f7 100%);
+  background-image: linear-gradient(#fff 0%, #f7f7f7 100%);
+  border: 2px solid rgba(27,128,236,0);
+  -webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.3), 0px 2px 20px rgba(0,0,0,0.07), 0px 1px 0px rgba(255,255,255,0.1) inset, 0 1px 4px rgba(0,0,0,0.27), 0 0 40px rgba(0,0,0,0.02) inset;
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.3), 0px 2px 20px rgba(0,0,0,0.07), 0px 1px 0px rgba(255,255,255,0.1) inset, 0 1px 4px rgba(0,0,0,0.27), 0 0 40px rgba(0,0,0,0.02) inset;
+}
+article section .card.black {
+  background: #000;
+  color: #fff;
+}
+article section .card.full {
+  -webkit-border-radius: 1.2em;
+  border-radius: 1.2em;
+  height: 90%;
+  margin-top: 5%;
+  margin-left: 5%;
+  width: 90%;
+}
+article section .card.full p {
+  font-size: 30px;
+  line-height: 36px;
+  margin: 20px;
+}
+article section .card.preview {
+  -webkit-border-radius: 0.6em;
+  border-radius: 0.6em;
+  bottom: 2%;
+  height: 40%;
+  left: 5%;
+  position: absolute;
+  -webkit-transform: rotate(-6deg);
+  -moz-transform: rotate(-6deg);
+  -o-transform: rotate(-6deg);
+  -ms-transform: rotate(-6deg);
+  transform: rotate(-6deg);
+  width: 40%;
+}
+article section .card.preview p {
+  font-size: 15px;
+  line-height: 21px;
+  margin: 10px;
+}
+article section .card.czar {
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+}
+article section .card.icon {
+  background-image: none;
+  border: none;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  display: inline-block;
+  height: 24px;
+  overflow: visible;
+  vertical-align: middle;
+  width: 16px;
+}
+article section .card.icon.x1,
+article section .card.icon.x2,
+article section .card.icon.x3 {
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+}
+article section .card.icon.x2 {
+  left: -2px;
+  position: relative;
+  -webkit-transform: rotate(-12deg);
+  -moz-transform: rotate(-12deg);
+  -o-transform: rotate(-12deg);
+  -ms-transform: rotate(-12deg);
+  transform: rotate(-12deg);
+}
+article section .card.icon.x2:after {
+  background: #fff;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 0 1px rgba(0,0,0,0.5);
+  box-shadow: 0 0 1px rgba(0,0,0,0.5);
+  content: '';
+  display: inline-block;
+  height: 24px;
+  left: 2px;
+  position: absolute;
+  -webkit-transform: rotate(24deg);
+  -moz-transform: rotate(24deg);
+  -o-transform: rotate(24deg);
+  -ms-transform: rotate(24deg);
+  transform: rotate(24deg);
+  width: 16px;
+}
+article section .card.icon.x3 {
+  left: -3px;
+  position: relative;
+  -webkit-transform: rotate(-12deg);
+  -moz-transform: rotate(-12deg);
+  -o-transform: rotate(-12deg);
+  -ms-transform: rotate(-12deg);
+  transform: rotate(-12deg);
+}
+article section .card.icon.x3:before {
+  background: #fff;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+  content: '';
+  display: inline-block;
+  height: 24px;
+  left: 3px;
+  position: absolute;
+  -webkit-transform: rotate(12deg);
+  -moz-transform: rotate(12deg);
+  -o-transform: rotate(12deg);
+  -ms-transform: rotate(12deg);
+  transform: rotate(12deg);
+  width: 16px;
+  z-index: 1;
+}
+article section .card.icon.x3:after {
+  background: #fff;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+  content: '';
+  display: inline-block;
+  height: 24px;
+  left: 6px;
+  position: absolute;
+  top: 3px;
+  -webkit-transform: rotate(24deg);
+  -moz-transform: rotate(24deg);
+  -o-transform: rotate(24deg);
+  -ms-transform: rotate(24deg);
+  transform: rotate(24deg);
+  width: 16px;
+  z-index: 2;
+}
+article section .card.new:after {
+  background: #1e51c7;
+  -webkit-box-shadow: 0 1px 0 #18419f;
+  box-shadow: 0 1px 0 #18419f;
+  color: #fff;
+  content: 'New';
+  display: inline-block;
+  font-size: 12px;
+  padding: 6px 0 4px;
+  position: absolute;
+  text-align: center;
+  text-shadow: 1px 1px 0 #18419f;
+  text-transform: uppercase;
+  top: 10px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  right: -25px;
+  width: 100px;
+}
+article section .card.animate {
+  -webkit-transition: 0.3s linear;
+  -moz-transition: 0.3s linear;
+  -o-transition: 0.3s linear;
+  -ms-transition: 0.3s linear;
+  transition: 0.3s linear;
+}
+article section .card.fadeIn {
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+}
+article section .card.fadeOut {
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+}
+article section .card.fadeOutUp {
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  -webkit-transform: translate(0, -100%);
+  -moz-transform: translate(0, -100%);
+  -o-transform: translate(0, -100%);
+  -ms-transform: translate(0, -100%);
+  transform: translate(0, -100%);
+}
+article section .card.hidden {
+  display: none;
 }
 article section.cards {
   background: #fff;
-/*.frames
-        bottom 0
-        left 0
-        position absolute
-        top 44px
-        right 0
-
-      .frame
-        absolute top left
-        height 100%
-        width 100%
-        &.right
-          transform translate(100%, 0)
-      */
+  z-index: 4;
 }
 article section.cards.right {
   -webkit-transform: translate(90%, 0);
@@ -170,31 +473,8 @@ article section.cards .rn-carousel-container {
   left: 0;
   position: absolute;
   right: 0;
-  top: 44px;
+  top: 37px;
 }
 article section.cards .rn-carousel-slides {
   height: 100%;
-}
-article section.cards .card {
-  background-color: #fff;
-  background-image: -webkit-linear-gradient(#fff 0%, #f7f7f7 100%);
-  background-image: -moz-linear-gradient(#fff 0%, #f7f7f7 100%);
-  background-image: -o-linear-gradient(#fff 0%, #f7f7f7 100%);
-  background-image: -ms-linear-gradient(#fff 0%, #f7f7f7 100%);
-  background-image: linear-gradient(#fff 0%, #f7f7f7 100%);
-  border: 2px solid rgba(27,128,236,0);
-  -webkit-border-radius: 1.2em;
-  border-radius: 1.2em;
-  -webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.3), 0px 2px 20px rgba(0,0,0,0.07), 0px 1px 0px rgba(255,255,255,0.1) inset, 0 1px 4px rgba(0,0,0,0.27), 0 0 40px rgba(0,0,0,0.02) inset;
-  box-shadow: 0px 2px 2px rgba(0,0,0,0.3), 0px 2px 20px rgba(0,0,0,0.07), 0px 1px 0px rgba(255,255,255,0.1) inset, 0 1px 4px rgba(0,0,0,0.27), 0 0 40px rgba(0,0,0,0.02) inset;
-  height: 90%;
-  margin-top: 5%;
-  margin-left: 5%;
-  width: 90%;
-}
-article section.cards .card p {
-  font-family: "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-size: 30px;
-  font-weight: 300;
-  margin: 20px;
 }

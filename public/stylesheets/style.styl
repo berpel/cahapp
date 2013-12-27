@@ -23,6 +23,55 @@ body
   font Arial, Helvetica, sans-serif
   overflow hidden
 
+.modal
+  absolute top left
+  //background transparent
+  height 100%
+  width 100%
+  z-index 9999
+.dialog
+  background rgba(0,0,0,.8)
+  bottom 0
+  position absolute
+  transform translate(0, 100%)
+  width 100%
+  z-index 10000
+  &.animate
+    transition transform .1s linear
+  &.show
+    transform translate(0, 0)
+
+  .wrap
+    padding 20px
+    p
+      color #fff
+      font-family "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
+      margin-bottom 20px
+      text-align center
+    button
+      border none
+      border-bottom 2px solid transparent
+      border-radius 4px
+      color #fff
+      display block
+      font-family "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
+      outline none
+      padding 10px
+      text-transform uppercase
+      width 100%
+      &.green
+        $green = #1AD15B
+        background $green
+        border-color darken($green, 20%)
+        text-shadow 1px 1px 0 darken($green, 20%)
+      &.red
+        $red = #DD435D
+        background $red
+        border-color darken($red, 20%)
+        text-shadow 1px 1px 0 darken($red, 20%)
+      & + button
+        margin-top 20px
+
 article
   height 100%
   position relative
@@ -30,23 +79,184 @@ article
   section
     absolute top left
     height 100%
-    transition .3s linear
+    transition transform .1s linear
     overflow hidden
     width 100%
-
+    
     header
       background #333
+      color: #fff
+      font-family "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
       padding 10px
 
-    &.settings
+    &.game
       background #444
       color #fff
+      font-family "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
       width: 90%
       header
+        background #444
         text-align center
+      .labels
+        background #3b3b3b
+        color #aaa
+        font-family "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
+        font-size 12px
+        padding 6px 0
+        text-transform uppercase
+        label
+          &.status
+            margin-left 15px
+          &.player
+            margin-left 15px
+          &.score
+            float right
+            margin-right 15px
+      ul
+        li
+          clearfix()
+          border-bottom 1px solid #3b3b3b
+          text-shadow 1px 1px 1px rbga(0,0,0,1)
+          padding 15px
+          span.name
+            display inline-block
+            margin-left 10px
+            vertical-align middle
+          span.score
+            float right
+            text-align center
+            width 41px
+
+    .card
+      font-family "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
+      font-weight 300
+      overflow hidden
+      position relative
+      &.white
+        background-color #fff
+        background-image linear-gradient(#ffffff 0%, #f7f7f7 100%)
+        border 2px solid rgba(27,128,236,0.0)
+        box-shadow 0px 2px 2px rgba(0,0,0,0.3), 0px 2px 20px rgba(0,0,0,0.07), 0px 1px 0px rgba(255,255,255,0.1) inset, 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.02) inset
+      &.black
+        background #000
+        color #fff
+      &.full
+        border-radius 1.2em
+        height 90%
+        margin-top 5%
+        margin-left 5%
+        width 90%
+        p
+          font-size 30px
+          line-height 36px
+          margin 20px
+      &.preview
+        border-radius .6em
+        bottom 2%
+        height 40%
+        left 5% 
+        position absolute
+        transform rotate(-6deg)
+        width 40%
+        p
+          font-size 15px
+          line-height 21px
+          margin 10px
+      $iconHeight = 24px
+      $iconWidth = 16px
+      $iconRotate = 12
+      &.czar
+        box-shadow 0 1px 1px rgba(0,0,0,.5)
+      &.icon
+        background-image none
+        border none
+        border-radius 2px
+        display inline-block
+        height $iconHeight
+        overflow visible
+        vertical-align middle
+        width $iconWidth
+        &.x1, &.x2, &.x3
+          box-shadow 0 1px 1px rgba(0,0,0,.5)
+        &.x2
+          left -2px
+          position relative
+          transform rotate(unit($iconRotate*-1, deg))
+          &:after
+            background: #fff
+            border-radius 2px
+            box-shadow 0 0 1px rgba(0,0,0,.5)
+            content ''
+            display inline-block
+            height $iconHeight
+            left 2px
+            position absolute
+            transform rotate(unit($iconRotate*2, deg))
+            width $iconWidth
+        &.x3
+          left -3px
+          position relative
+          transform rotate(unit($iconRotate*-1, deg))
+          &:before
+            background: #fff
+            border-radius 2px
+            box-shadow 0 1px 1px rgba(0,0,0,.5)
+            content ''
+            display inline-block
+            height $iconHeight
+            left 3px
+            position absolute
+            transform rotate(unit($iconRotate, deg))
+            width $iconWidth
+            z-index 1
+          &:after
+            background: #fff
+            border-radius 2px
+            box-shadow 0 1px 1px rgba(0,0,0,.5)
+            content ''
+            display inline-block
+            height $iconHeight
+            left 6px
+            position absolute
+            top 3px
+            transform rotate(unit($iconRotate*2, deg))
+            width $iconWidth
+            z-index 2
+      &.new
+        //opacity 0
+        &:after
+          background #1e51c7
+          box-shadow 0 1px 0 darken(#1e51c7, 20%)
+          color #fff
+          content 'New'
+          display inline-block
+          font-size 12px
+          padding 6px 0 4px
+          position absolute
+          text-align center
+          text-shadow 1px 1px 0 darken(#1e51c7, 20%)
+          text-transform uppercase
+          top 10px
+          transform rotate(45deg)
+          right -25px
+          width 100px
+      &.animate
+        transition .3s linear
+      &.fadeIn
+        opacity: 1
+      &.fadeOut
+        opacity: 0
+      &.fadeOutUp
+        opacity: 0
+        transform: translate(0, -100%)
+      &.hidden
+        display none
+
+
 
     &.cards
       background #fff
+      z-index 4
       &.right
         transform translate(90%, 0)
       header
@@ -58,39 +268,7 @@ article
         left 0
         position absolute
         right 0
-        top 44px
-        //width 100%
+        top 37px
 
       .rn-carousel-slides
         height 100%
-
-      /*.frames
-        bottom 0
-        left 0
-        position absolute
-        top 44px
-        right 0
-
-      .frame
-        absolute top left
-        height 100%
-        width 100%
-        &.right
-          transform translate(100%, 0)
-      */
-
-      .card
-        background-color #fff
-        background-image linear-gradient(#ffffff 0%, #f7f7f7 100%)
-        border 2px solid rgba(27,128,236,0.0)
-        border-radius 1.2em
-        box-shadow 0px 2px 2px rgba(0,0,0,0.3), 0px 2px 20px rgba(0,0,0,0.07), 0px 1px 0px rgba(255,255,255,0.1) inset, 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.02) inset
-        height 90%
-        margin-top 5%
-        margin-left 5%
-        width 90%
-        p
-          font-family "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
-          font-size 30px
-          font-weight 300
-          margin 20px

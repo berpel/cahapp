@@ -9,13 +9,9 @@ html(ng-app='cah')
     script(src='/scripts/lib/angular-mobile.js')
     script(src='/scripts/lib/angular-carousel.js')
     script(src='/scripts/app.js')
+    link(rel='stylesheet', href='http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css')
     link(rel='stylesheet', href='/stylesheets/lib/angular-carousel.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
 
-    article
-        section.settings(ng-controller='GameCtrl')
-            block settings
-        
-        section.cards(ng-controller='PlayerCtrl', ng-class='{"right":right}')
-            block cards
+    block content
