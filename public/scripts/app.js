@@ -59,7 +59,7 @@ function GameCtrl($scope) {
   $scope.join = function() {
     peer.init($scope.name);
     peer.subscribe();
-    peer.publish({peer: {playerNew:$scope.name}});
+    peer.announce({peer: {playerNew:$scope.name}});
     $scope.joined = true;
   }
 }

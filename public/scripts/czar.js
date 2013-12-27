@@ -19,5 +19,13 @@ var czar = {
     var card = Math.floor(Math.random() * cardsBlack.length);
 
     return cardsBlack[card]
-  }
+  },
+
+  passCzar: function(player) {
+    console.log("Select the new czar");
+  },
+
+  selectWinner: function(player, card) {
+    console.log("notify the player and send them their card");
+  } 
 }
