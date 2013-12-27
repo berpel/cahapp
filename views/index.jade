@@ -2,7 +2,11 @@ extend layout
 
 block content
   article
-    section.game(ng-controller='GameCtrl')
+    section.game(ng-controller='GameCtrl', ng-class='{"hidden":joined}')
+      input(name='name', ng-model='name')
+      button.green(ng-click='join()') Join
+
+    section.players(ng-controller='PlayersCtrl')
       header
         h1 Round {{round}}
       .labels
@@ -16,7 +20,7 @@ block content
           span.score {{player.score}}
 
     
-    section.cards(ng-controller='PlayerCtrl', ng-class='{"right":right}')
+    section.cards(ng-controller='CardsCtrl', ng-class='{"right":right}')
       header
         i.fa.fa-bars(ng-click='right = !right')
       ul.frames(rn-carousel, rn-carousel-watch)

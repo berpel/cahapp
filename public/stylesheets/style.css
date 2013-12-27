@@ -108,6 +108,30 @@ body {
   font: Arial, Helvetica, sans-serif;
   overflow: hidden;
 }
+article {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+article section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  -webkit-transition: -webkit-transform 0.1s linear;
+  -moz-transition: -moz-transform 0.1s linear;
+  -o-transition: -o-transform 0.1s linear;
+  -ms-transition: -ms-transform 0.1s linear;
+  transition: transform 0.1s linear;
+  overflow: hidden;
+  width: 100%;
+}
+article section header {
+  background: #333;
+  color: #fff;
+  font-family: "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  padding: 10px;
+}
 .modal {
   position: absolute;
   top: 0;
@@ -177,89 +201,13 @@ body {
 .dialog .wrap button + button {
   margin-top: 20px;
 }
-article {
-  height: 100%;
-  position: relative;
-  width: 100%;
-}
-article section {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  -webkit-transition: -webkit-transform 0.1s linear;
-  -moz-transition: -moz-transform 0.1s linear;
-  -o-transition: -o-transform 0.1s linear;
-  -ms-transition: -ms-transform 0.1s linear;
-  transition: transform 0.1s linear;
-  overflow: hidden;
-  width: 100%;
-}
-article section header {
-  background: #333;
-  color: #fff;
-  font-family: "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  padding: 10px;
-}
-article section.game {
-  background: #444;
-  color: #fff;
-  font-family: "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  width: 90%;
-}
-article section.game header {
-  background: #444;
-  text-align: center;
-}
-article section.game .labels {
-  background: #3b3b3b;
-  color: #aaa;
-  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-size: 12px;
-  padding: 6px 0;
-  text-transform: uppercase;
-}
-article section.game .labels label.status {
-  margin-left: 15px;
-}
-article section.game .labels label.player {
-  margin-left: 15px;
-}
-article section.game .labels label.score {
-  float: right;
-  margin-right: 15px;
-}
-article section.game ul li {
-  zoom: 1;
-  border-bottom: 1px solid #3b3b3b;
-  text-shadow: 1px 1px 1px rbga(0, 0, 0, 1);
-  padding: 15px;
-}
-article section.game ul li:before,
-article section.game ul li:after {
-  content: "";
-  display: table;
-}
-article section.game ul li:after {
-  clear: both;
-}
-article section.game ul li span.name {
-  display: inline-block;
-  margin-left: 10px;
-  vertical-align: middle;
-}
-article section.game ul li span.score {
-  float: right;
-  text-align: center;
-  width: 41px;
-}
-article section .card {
+.card {
   font-family: "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
   overflow: hidden;
   position: relative;
 }
-article section .card.white {
+.card.white {
   background-color: #fff;
   background-image: -webkit-linear-gradient(#fff 0%, #f7f7f7 100%);
   background-image: -moz-linear-gradient(#fff 0%, #f7f7f7 100%);
@@ -270,11 +218,11 @@ article section .card.white {
   -webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.3), 0px 2px 20px rgba(0,0,0,0.07), 0px 1px 0px rgba(255,255,255,0.1) inset, 0 1px 4px rgba(0,0,0,0.27), 0 0 40px rgba(0,0,0,0.02) inset;
   box-shadow: 0px 2px 2px rgba(0,0,0,0.3), 0px 2px 20px rgba(0,0,0,0.07), 0px 1px 0px rgba(255,255,255,0.1) inset, 0 1px 4px rgba(0,0,0,0.27), 0 0 40px rgba(0,0,0,0.02) inset;
 }
-article section .card.black {
+.card.black {
   background: #000;
   color: #fff;
 }
-article section .card.full {
+.card.full {
   -webkit-border-radius: 1.2em;
   border-radius: 1.2em;
   height: 90%;
@@ -282,12 +230,12 @@ article section .card.full {
   margin-left: 5%;
   width: 90%;
 }
-article section .card.full p {
+.card.full p {
   font-size: 30px;
   line-height: 36px;
   margin: 20px;
 }
-article section .card.preview {
+.card.preview {
   -webkit-border-radius: 0.6em;
   border-radius: 0.6em;
   bottom: 2%;
@@ -301,16 +249,16 @@ article section .card.preview {
   transform: rotate(-6deg);
   width: 40%;
 }
-article section .card.preview p {
+.card.preview p {
   font-size: 15px;
   line-height: 21px;
   margin: 10px;
 }
-article section .card.czar {
+.card.czar {
   -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.5);
   box-shadow: 0 1px 1px rgba(0,0,0,0.5);
 }
-article section .card.icon {
+.card.icon {
   background-image: none;
   border: none;
   -webkit-border-radius: 2px;
@@ -321,13 +269,13 @@ article section .card.icon {
   vertical-align: middle;
   width: 16px;
 }
-article section .card.icon.x1,
-article section .card.icon.x2,
-article section .card.icon.x3 {
+.card.icon.x1,
+.card.icon.x2,
+.card.icon.x3 {
   -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.5);
   box-shadow: 0 1px 1px rgba(0,0,0,0.5);
 }
-article section .card.icon.x2 {
+.card.icon.x2 {
   left: -2px;
   position: relative;
   -webkit-transform: rotate(-12deg);
@@ -336,7 +284,7 @@ article section .card.icon.x2 {
   -ms-transform: rotate(-12deg);
   transform: rotate(-12deg);
 }
-article section .card.icon.x2:after {
+.card.icon.x2:after {
   background: #fff;
   -webkit-border-radius: 2px;
   border-radius: 2px;
@@ -354,7 +302,7 @@ article section .card.icon.x2:after {
   transform: rotate(24deg);
   width: 16px;
 }
-article section .card.icon.x3 {
+.card.icon.x3 {
   left: -3px;
   position: relative;
   -webkit-transform: rotate(-12deg);
@@ -363,7 +311,7 @@ article section .card.icon.x3 {
   -ms-transform: rotate(-12deg);
   transform: rotate(-12deg);
 }
-article section .card.icon.x3:before {
+.card.icon.x3:before {
   background: #fff;
   -webkit-border-radius: 2px;
   border-radius: 2px;
@@ -382,7 +330,7 @@ article section .card.icon.x3:before {
   width: 16px;
   z-index: 1;
 }
-article section .card.icon.x3:after {
+.card.icon.x3:after {
   background: #fff;
   -webkit-border-radius: 2px;
   border-radius: 2px;
@@ -402,7 +350,7 @@ article section .card.icon.x3:after {
   width: 16px;
   z-index: 2;
 }
-article section .card.new:after {
+.card.new:after {
   background: #1e51c7;
   -webkit-box-shadow: 0 1px 0 #18419f;
   box-shadow: 0 1px 0 #18419f;
@@ -424,24 +372,24 @@ article section .card.new:after {
   right: -25px;
   width: 100px;
 }
-article section .card.animate {
+.card.animate {
   -webkit-transition: 0.3s linear;
   -moz-transition: 0.3s linear;
   -o-transition: 0.3s linear;
   -ms-transition: 0.3s linear;
   transition: 0.3s linear;
 }
-article section .card.fadeIn {
+.card.fadeIn {
   opacity: 1;
   -ms-filter: none;
   filter: none;
 }
-article section .card.fadeOut {
+.card.fadeOut {
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
 }
-article section .card.fadeOutUp {
+.card.fadeOutUp {
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
@@ -451,30 +399,89 @@ article section .card.fadeOutUp {
   -ms-transform: translate(0, -100%);
   transform: translate(0, -100%);
 }
-article section .card.hidden {
+.card.hidden {
   display: none;
 }
-article section.cards {
+section.game {
+  background: #fff;
+  z-index: 1000;
+}
+section.game.hidden {
+  display: none;
+}
+section.players {
+  background: #444;
+  color: #fff;
+  font-family: "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  width: 90%;
+}
+section.players header {
+  background: #444;
+  text-align: center;
+}
+section.players .labels {
+  background: #3b3b3b;
+  color: #aaa;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 12px;
+  padding: 6px 0;
+  text-transform: uppercase;
+}
+section.players .labels label.status {
+  margin-left: 15px;
+}
+section.players .labels label.player {
+  margin-left: 15px;
+}
+section.players .labels label.score {
+  float: right;
+  margin-right: 15px;
+}
+section.players ul li {
+  zoom: 1;
+  border-bottom: 1px solid #3b3b3b;
+  text-shadow: 1px 1px 1px rbga(0, 0, 0, 1);
+  padding: 15px;
+}
+section.players ul li:before,
+section.players ul li:after {
+  content: "";
+  display: table;
+}
+section.players ul li:after {
+  clear: both;
+}
+section.players ul li span.name {
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+section.players ul li span.score {
+  float: right;
+  text-align: center;
+  width: 41px;
+}
+section.cards {
   background: #fff;
   z-index: 4;
 }
-article section.cards.right {
+section.cards.right {
   -webkit-transform: translate(90%, 0);
   -moz-transform: translate(90%, 0);
   -o-transform: translate(90%, 0);
   -ms-transform: translate(90%, 0);
   transform: translate(90%, 0);
 }
-article section.cards header button {
+section.cards header button {
   border: 1px solid #000;
 }
-article section.cards .rn-carousel-container {
+section.cards .rn-carousel-container {
   bottom: 0;
   left: 0;
   position: absolute;
   right: 0;
   top: 37px;
 }
-article section.cards .rn-carousel-slides {
+section.cards .rn-carousel-slides {
   height: 100%;
 }

@@ -1,0 +1,37 @@
+section.players
+  background #444
+  color #fff
+  font-family "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
+  width: 90%
+  header
+    background #444
+    text-align center
+  .labels
+    background #3b3b3b
+    color #aaa
+    font-family "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
+    font-size 12px
+    padding 6px 0
+    text-transform uppercase
+    label
+      &.status
+        margin-left 15px
+      &.player
+        margin-left 15px
+      &.score
+        float right
+        margin-right 15px
+  ul
+    li
+      clearfix()
+      border-bottom 1px solid #3b3b3b
+      text-shadow 1px 1px 1px rbga(0,0,0,1)
+      padding 15px
+      span.name
+        display inline-block
+        margin-left 10px
+        vertical-align middle
+      span.score
+        float right
+        text-align center
+        width 41px

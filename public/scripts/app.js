@@ -51,20 +51,27 @@ angular.module('cah').service('dialogService', ['$document', '$rootScope', '$com
   };
 }]);
 
-function GameCtrl($scope, dialogService) {
+angular.module('cah').run(function(){
+  console.log('hello')
+});
+
+function GameCtrl($scope) {
+  $scope.join = function() {
+    peer.init($scope.name);
+    peer.subscribe();
+    peer.publish({peer: {playerNew:$scope.name}});
+    $scope.joined = true;
+  }
+}
+
+function PlayersCtrl($scope, dialogService) {
   $scope.round = 1;
-  $scope.players = [
-    {name: 'Breet', score: 3, status: 'czar'},
-    {name: 'Mattkins', score: 1, status: 0},
-    {name: 'Kristin', score: 0, status: 1},
-    {name: 'Glass', score: 1, status: 2},
-    {name: 'Glenn', score: 1, status: 0},
-    {name: 'Baer', score: 1, status: 3},
-    {name: 'Kleyla', score: 1, status: 0},
-    {name: 'Kevin', score: 1, status: 0}
-  ];
+  $scope.players = [{name:'brett', status: 0, score: 1}];
+
 
   $scope.select = function(index) {
+    peer.getPlayers();
+
     selected = index;
     var options = {
       bodyText: index.name + ' has won round ' + $scope.round,
@@ -72,14 +79,14 @@ function GameCtrl($scope, dialogService) {
       templateUrl:'/templates/player-won-round.html'
       //callback: submit
     }
-    dialogService.showModalDialog(options);
+    //dialogService.showModalDialog(options);
   };
 
 }
 
-function PlayerCtrl($scope, $timeout, dialogService) {
-  $scope.cardsWhite = getWhiteCards(10);
-  $scope.cardBlack = getBlackCard();
+function CardsCtrl($scope, $timeout, dialogService) {
+  $scope.cardsWhite = czar.drawWhiteCards(10);
+  $scope.cardBlack = czar.drawBlackCard();
 
   var selected = null;
 
@@ -95,7 +102,7 @@ function PlayerCtrl($scope, $timeout, dialogService) {
   };
 
   var submit = function() {
-    var newCard = getWhiteCards(1);
+    var newCard = czar.drawWhiteCards(1);
     newCard[0].effect = 'new';
 
     $scope.cardsWhite[selected].effect = 'animate fadeOutUp';
@@ -107,26 +114,4 @@ function PlayerCtrl($scope, $timeout, dialogService) {
       $scope.cardBlack.effect = 'hidden';
     }, 1000);
   };
-}
-
-getBlackCard = function() {
-  var card = Math.floor(Math.random() * cardsBlack.length);
-
-  return cardsBlack[card]
-}
-
-getWhiteCards = function(quantity) {
-  var cards = [];
-
-  for (var i = 1; i <= quantity; i++) {
-    var card = Math.floor(Math.random() * cardsWhite.length);
-    
-    // get card
-    cards.push(cardsWhite[card]);
-
-    // remove card
-    cardsWhite.splice(card, 1)
-  }
-
-  return cards;
 }
