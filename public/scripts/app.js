@@ -66,7 +66,7 @@ function GameCtrl($scope) {
 
 function PlayersCtrl($scope, dialogService) {
   $scope.round = 1;
-  $scope.players = [{name:'brett', status: 0, score: 1}];
+  $scope.players = [{name:'brett', status: 'czar', score: 1}];
 
 
   $scope.select = function(index) {

@@ -16,9 +16,8 @@ var peer = {
     console.log(pubnub.uuid())
     pubnub.subscribe({
       channel: channel,
-      presence: function(data){
-        console.log('peer: subscribe: presence');
-        console.log(data);
+      presence: function(data) {
+        peer.getPlayers(data);
       },
       message: function(data){
         console.log('peer: subscribe: message');
@@ -43,7 +42,7 @@ var peer = {
 
   getPlayers: function() {
     console.log('peer: getPlayers');
-    console.log(pubnub)
+    console.log(pubnub);
     pubnub.here_now({
       channel: channel,
       callback: function(data){
